@@ -13,7 +13,9 @@ class Vehicle extends Model
         "brand",
         "type",
         "year",
-        "image_file_name"
+        "image_file_name",
+        "reservation_start",
+        "reservation_end",
     ];
     public function reservations()
     {

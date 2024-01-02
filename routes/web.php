@@ -8,3 +8,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+
+Route::get('/dateSearch', [SearchController::class, 'dateSearch'])->name('dateSearch');

@@ -24,4 +24,14 @@ class SearchController extends Controller
             return to_route('welcome');
         }
     }
+
+    public function dateSearch(Request $request)
+    {
+        $startDate = $request->input('dates');
+
+        $endDate = $request->input('end_date');
+        dd($startDate);
+
+
+    }
 }
