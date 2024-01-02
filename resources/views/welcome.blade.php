@@ -22,20 +22,16 @@
             gépjármű
             kártörténetét. </h2>
 
-        <form class="flex" method="GET" action="">
+        <form class="flex" method="GET" action="{{route('search')}}">
             <input class="w-full p-2 rounded-l-md " type="text" name="search"
                    placeholder="Keressen egy rendszámra"/>
             <button class="bg-black text-white p-2 rounded-r-md hover:bg-blue-500" type="submit">
                 Keresés
             </button>
         </form>
-
-        <form class="flex" action="">
-            <input class="w-full p-2 rounded-l-md " type="text" name="search"
-                   placeholder="Keressen egy rendszámra"/>
-            <button class="bg-black text-white p-2 rounded-r-md hover:bg-blue-500">
-                Keresés
-            </button>
-        </form>
+        @if (Session::has('noVehicle'))
+            <div class="bg-red-200 rounded-lg font-bold text-center p-2 mb-2">Nincs ilyen ármű nyilvántartva!
+            </div>
+        @endif
     </div>
 </div>
