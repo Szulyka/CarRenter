@@ -14,15 +14,18 @@
 
 <div class="bg-gradient-to-tr from-blue-600 to-red-600 min-h-screen flex items-center justify-center">
     <div class="flex flex-col bg-white bg-opacity-30 items-center rounded-md shadow-md p-6 mt-4">
-        <h1 class="text-xl mb-4">Gépjármű:</h1>
-        <h1 class=" mb-2">{{ $vehicle->brand }}</h1>
-        <h1 class="mb-2">{{ $vehicle->type }}</h1>
-        <h1 class="mb-2">{{ $vehicle->year }}</h1>
-        @if (!($vehicle->image_file_name === null))
-            <img class="rounded w-100 h-72 object-cover mb-4"
-                 src="{{ Storage::url('images/' . $vehicle->image_file_name) }}">
-        @else
-            🚫📷
-        @endif
+        @foreach($vehicles as $v)
+            <h1 class="text-xl mb-4">Gépjármű:</h1>
+            <h1 class=" mb-2 font-bold">{{ $v->license_plate }}</h1>
+            <h1 class=" mb-2">{{ $v->brand }}</h1>
+            <h1 class="mb-2">{{ $v->type }}</h1>
+            <h1 class="mb-2">{{ $v->year }}</h1>
+            @if (!($v->image_file_name === null))
+                <img class="rounded w-100 h-72 object-cover mb-4"
+                     src="{{ Storage::url('images/' . $v->image_file_name) }}">
+            @else
+                🚫📷
+            @endif
+        @endforeach
     </div>
 </div>

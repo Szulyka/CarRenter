@@ -27,11 +27,20 @@ class SearchController extends Controller
 
     public function dateSearch(Request $request)
     {
-        $startDate = $request->input('dates');
+        $dates = $request->input('dates');
+        $dateRange = explode(' - ', $dates);
+        $startDate = date('Y-m-d', strtotime($dateRange[0]));
+        $endDate = date('Y-m-d', strtotime($dateRange[1]));
 
-        $endDate = $request->input('end_date');
-        dd($startDate);
-
-
+        $availableVehicles = Vehicle::where(function ($query) use ($startDate, $endDate) {
+            $query->where('reservation_end', '<', $startDate)
+                ->orWhere('reservation_start', '>', $endDate);
+        })->get();
+        if (count($availableVehicles) != 0) {
+            return view('listAll', ['vehicles' => $availableVehicles]);
+        } else {
+            Session::flash('noVehicle');
+            return to_route('welcome');
+        }
     }
 }
