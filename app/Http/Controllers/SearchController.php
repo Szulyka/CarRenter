@@ -8,20 +8,35 @@ use Illuminate\Support\Facades\Session;
 
 class SearchController extends Controller
 {
-    public function search()
+    public function validateSearch($search)
     {
-        $search = request('search');
         $search = strtoupper($search);
         if (strlen($search) === 6) {
             $search = substr($search, 0, 3) . '-' . substr($search, 3);
         }
-
-        $vehicle = Vehicle::where('license_plate', $search)->first();
+        return $vehicle = Vehicle::where('license_plate', $search)->first();
+    }
+    public function search()
+    {
+        $search = request('search');
+        $vehicle = $this->validateSearch($search);
         if ($vehicle) {
             return view('list', ['vehicle' => $vehicle, 'crashes' => $vehicle->crashEvents]);
         } else {
             Session::flash('noVehicle');
             return to_route('welcome');
+        }
+    }
+
+    public function adminSearch()
+    {
+        $search = request('adminSearch');
+        $vehicle = $this->validateSearch($search);
+        if ($vehicle) {                         //'crashes' => $vehicle->crashEvents
+            return view('editVehicle', ['vehicle' => $vehicle]);
+        } else {
+            Session::flash('noVehicle');
+            return to_route('admin');
         }
     }
 

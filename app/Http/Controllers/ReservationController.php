@@ -17,7 +17,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        return view('listReservations', ['reservations' => Reservation::all()]);
     }
 
     /**
