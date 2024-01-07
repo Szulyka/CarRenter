@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('vehicle_id')->constrained();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('address');

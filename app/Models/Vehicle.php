@@ -13,6 +13,8 @@ class Vehicle extends Model
         "brand",
         "type",
         "year",
+        "pricePerDay",
+        "isReserved",
         "image_file_name",
         "reservation_start",
         "reservation_end",

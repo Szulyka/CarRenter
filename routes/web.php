@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,5 +10,6 @@ Route::get('/', function () {
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-
 Route::get('/dateSearch', [SearchController::class, 'dateSearch'])->name('dateSearch');
+
+Route::resource('reservations', ReservationController::class);

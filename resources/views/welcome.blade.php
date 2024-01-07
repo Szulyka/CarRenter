@@ -34,6 +34,11 @@
             </div>
         @endif
 
+        @if (Session::has('reservationAdded'))
+            <div class="bg-green-200 rounded-lg font-bold text-center p-2 mb-2">Foglalás sikeres!
+            </div>
+        @endif
+
         <form class="flex" method="GET" action="{{route('dateSearch')}}">
             <input class="w-full p-2 rounded-l-md" type="text" name="dates"/>
             <script>

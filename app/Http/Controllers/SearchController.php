@@ -27,6 +27,7 @@ class SearchController extends Controller
 
     public function dateSearch(Request $request)
     {
+        $datePattern = "/^\d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}$/";
         $dates = $request->input('dates');
         $dateRange = explode(' - ', $dates);
         $startDate = date('Y-m-d', strtotime($dateRange[0]));

@@ -22,6 +22,8 @@ class VehicleFactory extends Factory
             'brand' => fake()->word(),
             'type' => fake()->word(),
             'year' => fake()->year(),
+            'pricePerDay' => fake()->numberBetween(20000, 60000),
+            'isReserved' => 'false',
             'reservation_start' => fake()->dateTimeInInterval('+'.$r.' days', '+6 days'),
             'reservation_end' => fake()->dateTimeInInterval('+'.($r+7).' days', '+6 days')
         ];
