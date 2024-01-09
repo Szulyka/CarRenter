@@ -14,10 +14,13 @@ class Reservation extends Model
         "address",
         "phone_number",
         "days_reserved",
-        "price"
+        //"price",
+        "vehicle_id",
+        "reservation_start",
+        "reservation_end"
     ];
     public function vehicle()
     {
-        return $this->belongsToMany(Vehicle::class);
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 }

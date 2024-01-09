@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -41,9 +42,10 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      */
+    //oriasi baromsag - teszt
     public function show(Reservation $reservation)
     {
-        //
+
     }
 
     /**

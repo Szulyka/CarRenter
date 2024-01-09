@@ -11,13 +11,15 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('vehicle_id')->constrained();
+            $table->foreignId('vehicle_id')->constrained('vehicles')->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('address');
             $table->integer('phone_number');
             $table->integer('days_reserved');
-            $table->integer('price');
+            $table->date('reservation_start');
+            $table->date('reservation_end');
+            //$table->integer('price');
         });
     }
     public function down(): void

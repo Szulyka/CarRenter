@@ -15,10 +15,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('year');
             $table->integer('pricePerDay');
-            $table->boolean('isReserved');
             $table->string('image_file_name')->nullable();
-            $table->date('reservation_start')->nullable();
-            $table->date('reservation_end')->nullable();
             $table->timestamps();
         });
     }

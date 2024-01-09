@@ -27,7 +27,7 @@
             @else
                 🚫📷
             @endif
-            <a href="{{route('reservations.reserve', $v)}}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
+            <a href="" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
         @endforeach
     </div>
 </div>

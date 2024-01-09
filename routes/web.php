@@ -17,6 +17,7 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/dateSearch', [SearchController::class, 'dateSearch'])->name('dateSearch');
 Route::get('/adminSearch', [SearchController::class, 'adminSearch'])->name('adminSearch');
 
+Route::get('reservations/reserve', [ReservationController::class, 'reserve']);
 Route::resource('reservations', ReservationController::class);
 Route::resource('vehicles', VehicleController::class);
 

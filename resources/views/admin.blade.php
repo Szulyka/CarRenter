@@ -25,7 +25,7 @@
         <form class="flex" method="GET" action="{{route('adminSearch')}}">
             <input class="w-full p-2 rounded-l-md" type="text" name="adminSearch"
                    placeholder="Keressen egy rendszámra"/>
-            <button class="bg-black text-white p-2 rounded-r-md hover:bg-blue-500 w-40" type="submit">
+            <button class="bg-black text-white p-2 rounded-r-md hover:bg-blue-500" type="submit">
                 Keresés
             </button>
         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -47,11 +48,11 @@ class SearchController extends Controller
         $dateRange = explode(' - ', $dates);
         $startDate = date('Y-m-d', strtotime($dateRange[0]));
         $endDate = date('Y-m-d', strtotime($dateRange[1]));
-
-        $availableVehicles = Vehicle::where(function ($query) use ($startDate, $endDate) {
-            $query->where('reservation_end', '<', $startDate)
-                ->orWhere('reservation_start', '>', $endDate);
-        })->get();
+        //elerheto járművek idjai az adott időben
+        $avV = DB::select('select id from vehicles where id not in (select vehicle_id from reservations where not
+        (reservation_end < ? or reservation_start > ?))', [$startDate, $endDate]);
+        //dd($avV);
+        $availableVehicles = Vehicle::whereIn('id', collect($avV)->pluck('id'))->get();
         if (count($availableVehicles) != 0) {
             return view('listAll', ['vehicles' => $availableVehicles]);
         } else {

@@ -14,13 +14,10 @@ class Vehicle extends Model
         "type",
         "year",
         "pricePerDay",
-        "isReserved",
         "image_file_name",
-        "reservation_start",
-        "reservation_end",
     ];
     public function reservations()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class, 'vehicle_id');
     }
 }

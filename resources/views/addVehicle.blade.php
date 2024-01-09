@@ -4,10 +4,8 @@
 
         <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl">⬅️ </a>
 
-
     <div class="flex items-center justify-center p-6 ">
         <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-full">
-
 
             <h1 class="text-2xl font-bold mb-4">Adja hozzá járművét:</h1>
 
