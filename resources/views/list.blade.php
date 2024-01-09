@@ -2,13 +2,8 @@
 
 <div class="bg-black fixed top-0 w-full">
     <div class="flex items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="{{url()->previous()}}" class="text-white text-lg font-semibold">Vissza</a>
-        <div class="space-x-4">
-            <a href=""
-               class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Jármű szerkesztése</a>
-            <a href=""
-               class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Foglalások</a>
-        </div>
+        <a href="{{route('welcome')}}" class="text-white text-lg font-semibold hover:bg-blue-500 p-1.5 rounded-md transition-all">Főoldal</a>
+        <h1 class="text-white text-lg font-semibold ">Felhasználó</h1>
     </div>
 </div>
 

@@ -7,7 +7,7 @@
 
 <div class="bg-black items-center fixed top-0 w-full">
     <div class="flex items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="#" class="text-white text-lg font-semibold">Rent a car! - Admin Page</a>
+        <a href="#" class="text-white text-lg font-semibold p-2">Rent a car! - Admin Page</a>
         <div class="space-y-4 space-x-4 md:space-y-0 flex flex-wrap">
             <a href="{{ route('reservations.index') }}"
                class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Foglalások</a>

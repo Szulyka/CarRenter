@@ -2,13 +2,8 @@
 
 <div class="bg-black fixed top-0 w-full">
     <div class="flex items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="{{route('welcome')}}" class="text-white text-lg font-semibold">Vissza</a>
-        <div class="space-x-4">
-            <a href=""
-               class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Jármű szerkesztése</a>
-            <a href=""
-               class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Foglalások</a>
-        </div>
+        <a href="{{route('welcome')}}" class="text-white text-lg font-semibold hover:bg-blue-500 p-1.5 rounded-md transition-all">Főoldal</a>
+        <h1 class="text-white text-lg font-semibold ">Felhasználó</h1>
     </div>
 </div>
 
@@ -22,12 +17,12 @@
             <h1 class="mb-2">{{ $v->year }}</h1>
             <h1 class="mb-2">Ár/nap: {{ $v->pricePerDay }} Ft</h1>
             @if (!($v->image_file_name === null))
-                <img class="rounded w-100 h-72 object-cover mb-4"
+                <img class="rounded w-100 h-72 object-cover mb-4 mt-4 shadow-2xl"
                      src="{{ Storage::url('images/' . $v->image_file_name) }}">
             @else
                 🚫📷
             @endif
-            <a href="" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
+            <a href="{{route('reservations.create', $v)}}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
         @endforeach
     </div>
 </div>

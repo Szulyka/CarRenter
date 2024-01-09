@@ -26,6 +26,7 @@
                 <div class="font-medium">Hiba: {{$message}}</div>
                 @enderror
                 <input class="w-full p-2 rounded mb-4" type="text" name="year" placeholder="Évjárat" value="{{old('year', $vehicle -> year)}}"/>
+
                 <input class="w-full rounded mb-4" type="file" name="image_file_name" />
 
                 <button class="bg-black text-white p-2 rounded hover:bg-blue-500" type="submit">

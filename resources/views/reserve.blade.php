@@ -8,8 +8,8 @@
         <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-full">
 
             <h1 class="text-2xl font-bold mb-4">Adja meg adatait a foglaláshoz:</h1>
-            <h1 class="font-bold mb-4">Választott autó {{ $v->license_plate }}</h1>
-            <form class="flex flex-col" method="POST" action="{{route('reservations.store')}}">
+            <h1 class="font-bold mb-4">Választott autó {{ $vehicle->license_plate }}</h1>
+            <form class="flex flex-col" method="POST" action="{{route('reservations.store') }}">
                 @csrf
 
                 @error('name')
@@ -34,6 +34,8 @@
                 @enderror
 
                 <input class="w-full p-2 rounded mb-4" type="text" name="phone" placeholder="Telefonszám" value="{{old('phone', '')}}"/>
+
+                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
 
                 <h1> Foglalt napok száma: TODO (módosításhoz térjen vissza a főoldalra)</h1>
                 <h1>Foglalás össszege TODO</h1>

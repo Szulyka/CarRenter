@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
@@ -24,9 +25,9 @@ class ReservationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Vehicle $vehicle)
     {
-        return view('reserve', ['vehicles' => Vehicle::all()]);
+        return view('reserve', ['vehicle' => $vehicle]);
     }
 
     /**
@@ -34,15 +35,22 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        Reservation::create($request);
-        Session::flash('reservationAdded');
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
+                'phone' => 'required|numeric',
+            ],
+        );
+        Reservation::create($validated);
+        Session::flash('reservation_added');
         return redirect()->route('home');
     }
 
     /**
      * Display the specified resource.
      */
-    //oriasi baromsag - teszt
     public function show(Reservation $reservation)
     {
 
