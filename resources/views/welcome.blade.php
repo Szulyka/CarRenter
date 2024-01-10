@@ -22,7 +22,6 @@
             <div class="bg-red-200 rounded-lg font-bold text-center p-2 mb-2">Nincsenek ebben az időszakban elérhető járművek!</div>
         @endif
 
-
         @if (Session::has('vehicle_edited'))
             <div class="bg-green-200 rounded-lg font-bold text-center p-2 mb-2">Jármű sikeresen módosítva!</div>
         @endif

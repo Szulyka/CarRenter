@@ -2,12 +2,12 @@
 
 <div class="bg-gradient-to-tr from-blue-600 to-red-600 min-h-screen p-6">
 
-        <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl">⬅️ </a>
+        <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl p-4">⬅️ </a>
 
     <div class="flex items-center justify-center p-6 ">
-        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-full">
+        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-1/2">
 
-            <h1 class="text-2xl font-bold mb-4">Adja hozzá járművét:</h1>
+            <h1 class="text-2xl font-bold mb-4">Adjon hozzá járművet!:</h1>
 
             <form class="flex flex-col" method="POST" action="{{route('vehicles.store')}}" enctype="multipart/form-data">
                 @csrf

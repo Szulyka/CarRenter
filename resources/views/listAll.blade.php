@@ -11,18 +11,20 @@
     <div class="flex flex-col bg-white bg-opacity-30 items-center rounded-md shadow-md p-6 mt-20 mb-8">
         <h1 class="text-2xl font-bold mb-6">Elérhető járművek:</h1>
         @foreach($vehicles as $v)
-            <h1 class=" mb-2 font-bold">{{ $v->license_plate }}</h1>
-            <h1 class=" mb-2">{{ $v->brand }}</h1>
-            <h1 class="mb-2">{{ $v->type }}</h1>
-            <h1 class="mb-2">{{ $v->year }}</h1>
-            <h1 class="mb-2">Ár/nap: {{ $v->pricePerDay }} Ft</h1>
-            @if (!($v->image_file_name === null))
-                <img class="rounded w-100 h-72 object-cover mb-4 mt-4 shadow-2xl"
-                     src="{{ Storage::url('images/' . $v->image_file_name) }}">
-            @else
-                🚫📷
+            @if ($v->is_active)
+                <h1 class=" mb-2 font-bold">{{ $v->license_plate }}</h1>
+                <h1 class=" mb-2">{{ $v->brand }}</h1>
+                <h1 class="mb-2">{{ $v->type }}</h1>
+                <h1 class="mb-2">{{ $v->year }}</h1>
+                <h1 class="mb-2">Ár/nap: {{ $v->pricePerDay }} Ft</h1>
+                @if (!($v->image_file_name === null))
+                    <img class="rounded w-100 h-72 object-cover mb-4 mt-4 shadow-2xl"
+                         src="{{ Storage::url('images/' . $v->image_file_name) }}">
+                @else
+                    🚫📷
+                @endif
+                <a href="{{route('reservations.create', $v)}}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
             @endif
-            <a href="{{route('reservations.create', $v)}}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
         @endforeach
     </div>
 </div>

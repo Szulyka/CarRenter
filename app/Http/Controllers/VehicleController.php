@@ -98,6 +98,11 @@ class VehicleController extends Controller
 
 
         $vehicle->update($validated);
+        $isActive = $request->filled('isActive');
+        $vehicle->update([
+            'is_active' => $isActive,
+        ]);
+        $vehicle->reservations()->delete();
         Session::flash('vehicle_edited');
         return redirect()->route('welcome');
     }

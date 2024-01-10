@@ -14,10 +14,10 @@ class Reservation extends Model
         "address",
         "phone_number",
         "days_reserved",
-        //"price",
         "vehicle_id",
         "reservation_start",
-        "reservation_end"
+        "reservation_end",
+        "price"
     ];
     public function vehicle()
     {

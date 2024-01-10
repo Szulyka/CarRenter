@@ -15,6 +15,7 @@ class Vehicle extends Model
         "year",
         "pricePerDay",
         "image_file_name",
+        "is_active"
     ];
     public function reservations()
     {

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('address');
             $table->integer('phone_number');
-            $table->integer('days_reserved');
+            $table->integer('days_reserved')->nullable();
             $table->date('reservation_start');
             $table->date('reservation_end');
-            //$table->integer('price');
+            $table->integer('price')->nullable();
         });
     }
     public function down(): void

@@ -36,7 +36,7 @@ class SearchController extends Controller
         if ($vehicle) {                         //'crashes' => $vehicle->crashEvents
             return view('editVehicle', ['vehicle' => $vehicle]);
         } else {
-            Session::flash('noVehicle');
+            Session::flash('noAdminVehicle');
             return to_route('admin');
         }
     }

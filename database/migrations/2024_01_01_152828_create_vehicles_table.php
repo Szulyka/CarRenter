@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('year');
             $table->integer('pricePerDay');
             $table->string('image_file_name')->nullable();
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

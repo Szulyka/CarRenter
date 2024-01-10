@@ -22,6 +22,11 @@
         <h1 class="text-2xl font-bold mb-4">RC - Üdv az autóbérlő alkalmazásban. </h1>
         <h2 class="font-bold mb-4">Keressen a szerkeszteni kívánt járműre!</h2>
 
+
+        @if (Session::has('noAdminVehicle'))
+            <div class="bg-red-200 rounded-lg font-bold text-center p-2 mb-2">Nincs ilyen jármű!</div>
+        @endif
+
         <form class="flex" method="GET" action="{{route('adminSearch')}}">
             <input class="w-full p-2 rounded-l-md" type="text" name="adminSearch"
                    placeholder="Keressen egy rendszámra"/>

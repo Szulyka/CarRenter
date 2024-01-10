@@ -22,8 +22,8 @@
             <h1 class="mb-2">Telefonszám: {{ $v->phone_number }}</h1>
             <h1 class="mb-2">Lefoglalt napok száma: {{ $v->days_reserved }}</h1>
             <h1 class="mb-2">Foglalás kezdete: {{ $v->reservation_start }}</h1>
-            <h1 class="mb-2">Foglalás vége: {{ $v->reservation_start}}</h1>
-            <h1 class="mb-2">Fizetendő összeg: {{ $v->days_reserved*$v->vehicle->pricePerPay}} Ft</h1>
+            <h1 class="mb-2">Foglalás vége: {{ $v->reservation_start }}</h1>
+            <h1 class="mb-2">Fizetendő összeg: {{ $v->price }} Ft</h1>
         @endforeach
     </div>
 </div>

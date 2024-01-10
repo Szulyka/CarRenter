@@ -5,7 +5,7 @@
     <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl p-4">⬅️ </a>
 
     <div class="flex items-center justify-center p-6 ">
-        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-full">
+        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-1/2">
 
 
             <h1 class="text-2xl font-bold mb-4">Módosítsa járművének adatait:</h1>
@@ -27,12 +27,16 @@
                 @enderror
                 <input class="w-full p-2 rounded mb-4" type="text" name="year" placeholder="Évjárat" value="{{old('year', $vehicle -> year)}}"/>
 
+                <div class="flex items-center">
+                    <span class="text-l mb-4">Aktív a jármű?</span>
+                    <input class="p-2 rounded mb-4 ml-2" type="checkbox" name="isActive" value="{{ old('year', $vehicle->is_active) }}" />
+                </div>
+
                 <input class="w-full rounded mb-4" type="file" name="image_file_name" />
 
                 <button class="bg-black text-white p-2 rounded hover:bg-blue-500" type="submit">
                     Szerkesztés
                 </button>
-                <a href="">Deaktiválás</a>
             </form>
         </div>
     </div>
