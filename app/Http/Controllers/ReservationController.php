@@ -5,13 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
-    public function reserve(Vehicle $v)
+    public function reserve(Request $v)
     {
-        return view('reserve', ['vehicle' => Vehicle::where($v->license_plate)]);
+        $veh = Vehicle::find($v->id);
+        $vS = $v->start_date;
+        $vE = $v->end_date;
+        $delta = Carbon::parse($vS)->diffInDays(Carbon::parse($vE));
+        return view('reserve', [
+            'vehicle' => $veh,
+            'start_date' => $vS,
+            'end_date' => $vE,
+            'days_sum' => $delta,
+            'price_sum' => $veh->pricePerDay*$delta
+            ]);
     }
 
     /**
@@ -25,9 +36,8 @@ class ReservationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Vehicle $vehicle)
+    public function create()
     {
-        return view('reserve', ['vehicle' => $vehicle]);
     }
 
     /**
@@ -40,12 +50,19 @@ class ReservationController extends Controller
                 'name' => 'required',
                 'email' => 'required',
                 'address' => 'required',
-                'phone' => 'required|numeric',
+                'phone_number' => 'required|numeric',
+                'vehicle_id' => 'required',
+                'reservation_start' => 'required|date',
+                'reservation_end' => 'required|date',
             ],
         );
+        $daysSum = Carbon::parse($request->reservation_end)->diffInDays(Carbon::parse($request->reservation_start));
+        $validated['days_reserved'] = $daysSum;
+        $vehicle = Vehicle::find($request->vehicle_id);
+        $validated['price'] = $daysSum * $vehicle->pricePerDay;
         Reservation::create($validated);
         Session::flash('reservation_added');
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
     /**

@@ -23,7 +23,7 @@
                 @else
                     🚫📷
                 @endif
-                <a href="{{route('reservations.create', $v)}}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
+                <a href="{{ route('reservations.reserve', [$v->id, $start_date, $end_date]) }}" class="mb-6 font-bold hover:underline">Lefoglalom!</a>
             @endif
         @endforeach
     </div>

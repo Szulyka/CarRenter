@@ -54,7 +54,7 @@ class SearchController extends Controller
         //dd($avV);
         $availableVehicles = Vehicle::whereIn('id', collect($avV)->pluck('id'))->get();
         if (count($availableVehicles) != 0) {
-            return view('listAll', ['vehicles' => $availableVehicles]);
+            return view('listAll', ['vehicles' => $availableVehicles, 'start_date' => $startDate, 'end_date' => $endDate]);
         } else {
             Session::flash('noVehicle');
             return to_route('welcome');

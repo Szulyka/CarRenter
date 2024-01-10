@@ -29,7 +29,7 @@
 
                 <div class="flex items-center">
                     <span class="text-l mb-4">Aktív a jármű?</span>
-                    <input class="p-2 rounded mb-4 ml-2" type="checkbox" name="isActive" value="{{ old('year', $vehicle->is_active) }}" />
+                    <input class="p-2 rounded mb-4 ml-2" type="checkbox" name="isActive" value="{{ old('isActive', $vehicle->is_active) }}" checked/>
                 </div>
 
                 <input class="w-full rounded mb-4" type="file" name="image_file_name" />

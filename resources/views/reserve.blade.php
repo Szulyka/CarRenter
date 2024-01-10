@@ -2,10 +2,10 @@
 
 <div class="bg-gradient-to-tr from-blue-600 to-red-600 min-h-screen p-6">
 
-    <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl">⬅️ </a>
+    <a href="{{ url()->previous() }}" class="absolute top-0 left-0 text-black text-2xl p-4">⬅️ </a>
 
     <div class="flex items-center justify-center p-6">
-        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-full">
+        <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-1/2">
 
             <h1 class="text-2xl font-bold mb-4">Adja meg adatait a foglaláshoz:</h1>
             <h1 class="font-bold mb-4">Választott autó {{ $vehicle->license_plate }}</h1>
@@ -33,12 +33,14 @@
                 <div class="font-medium">Hiba: {{$message}}</div>
                 @enderror
 
-                <input class="w-full p-2 rounded mb-4" type="text" name="phone" placeholder="Telefonszám" value="{{old('phone', '')}}"/>
+                <input class="w-full p-2 rounded mb-4" type="text" name="phone_number" placeholder="Telefonszám" value="{{old('phone', '')}}"/>
 
                 <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                <input type="hidden" name="reservation_start" value="{{ $start_date}}">
+                <input type="hidden" name="reservation_end" value="{{ $end_date }}">
 
-                <h1> Foglalt napok száma: TODO (módosításhoz térjen vissza a főoldalra)</h1>
-                <h1>Foglalás össszege TODO</h1>
+                <h1 class="font-bold mb-4"> Foglalt napok száma: {{$days_sum}} (módosításhoz térjen vissza a főoldalra) </h1>
+                <h1 class="font-bold mb-4">Fizetendő összeg: {{$price_sum}} Ft</h1>
 
                 <button class="bg-black text-white p-2 rounded hover:bg-blue-500" type="submit">
                     Foglalás

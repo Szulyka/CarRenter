@@ -7,7 +7,7 @@
     <div class="flex items-center justify-center p-6 ">
         <div class="bg-white bg-opacity-30 rounded-md shadow-md p-6 w-1/2">
 
-            <h1 class="text-2xl font-bold mb-4">Adjon hozzá járművet!:</h1>
+            <h1 class="text-2xl font-bold mb-4">Adjon hozzá járművet:</h1>
 
             <form class="flex flex-col" method="POST" action="{{route('vehicles.store')}}" enctype="multipart/form-data">
                 @csrf
@@ -36,7 +36,7 @@
                 @error('price')
                 <div class="font-medium">Hiba: {{$message}}</div>
                 @enderror
-                <input class="w-full p-2 rounded mb-4" type="text" name="price" placeholder="Ár/nap" value="{{old('price', '')}}"/>
+                <input class="w-full p-2 rounded mb-4" type="text" name="pricePerDay" placeholder="Ár/nap" value="{{old('price', '')}}"/>
 
                 @error('image_file_name')
                 <div class="font-medium">Hiba: {{$message}}</div>

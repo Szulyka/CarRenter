@@ -36,12 +36,13 @@ class VehicleController extends Controller
                 'brand' => 'required',
                 'type' => 'required',
                 'year' => 'required|numeric',
-                'price_per_day' => 'required|numeric',
+                'pricePerDay' => 'required|numeric',
                 'image_file_name' => 'image',
             ],
             [
                 'license_plate.required' => 'A rendszám megadása kötelező!',
             ]
+
         );
         $validated['license_plate'] = strtoupper($validated['license_plate']);
         if (strlen($validated['license_plate']) === 6) {
@@ -54,11 +55,10 @@ class VehicleController extends Controller
             $validated['image_file_name'] = $fname;
         }
 
-        //innetol jo adatok
+        $validated['is_active'] = true;
         Vehicle::create($validated);
         Session::flash('vehicle_added');
-
-        return redirect()->route('home');
+        return redirect()->route('admin');
     }
 
     /**
@@ -102,9 +102,11 @@ class VehicleController extends Controller
         $vehicle->update([
             'is_active' => $isActive,
         ]);
-        $vehicle->reservations()->delete();
+        if(!$isActive) {
+            $vehicle->reservations()->delete();
+        }
         Session::flash('vehicle_edited');
-        return redirect()->route('welcome');
+        return redirect()->route('admin');
     }
 
     /**

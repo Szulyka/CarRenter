@@ -7,7 +7,7 @@
 
 <div class="bg-black items-center fixed top-0 w-full">
     <div class="flex items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="#" class="text-white text-lg font-semibold p-2">Rent a car! - Admin Page</a>
+        <a href="{{route('welcome')}}" class="text-white text-lg font-semibold p-2">Rent a car! - Admin Page</a>
         <div class="space-y-4 space-x-4 md:space-y-0 flex flex-wrap">
             <a href="{{ route('reservations.index') }}"
                class="text-white hover:bg-blue-500 p-2 px-4 rounded-md transition-all">Foglalások</a>
@@ -22,9 +22,16 @@
         <h1 class="text-2xl font-bold mb-4">RC - Üdv az autóbérlő alkalmazásban. </h1>
         <h2 class="font-bold mb-4">Keressen a szerkeszteni kívánt járműre!</h2>
 
-
         @if (Session::has('noAdminVehicle'))
             <div class="bg-red-200 rounded-lg font-bold text-center p-2 mb-2">Nincs ilyen jármű!</div>
+        @endif
+
+        @if (Session::has('vehicle_added'))
+            <div class="bg-green-200 rounded-lg font-bold text-center p-2 mb-2">Jármű sikeresen hozzáadva!</div>
+        @endif
+
+        @if (Session::has('vehicle_edited'))
+            <div class="bg-green-200 rounded-lg font-bold text-center p-2 mb-2">Jármű sikeresen módosítva!</div>
         @endif
 
         <form class="flex" method="GET" action="{{route('adminSearch')}}">
