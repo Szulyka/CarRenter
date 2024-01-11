@@ -1,0 +1,10 @@
+Projekt indítása git clone után:
+1. composer update
+2. example.env átnevezése -> .env
+3. /database mappában database.sqlite létrehozása
+3. php artisan key:generate
+3. npm i
+4. npm run build
+5. php artisan db:migrate --seed
+6. használatra kész :) Ha az admin tölt fel képet a járművekhez,
+máris látszani fog a felhasználóknak is foglaláskor
