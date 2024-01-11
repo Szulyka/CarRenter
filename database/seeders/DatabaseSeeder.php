@@ -19,22 +19,13 @@ class DatabaseSeeder extends Seeder
             ]);
             $cars->add($v);
         }
-        $reservations = collect();
-        for ($i = 1; $i <= 6; $i++) {
-            $r = Reservation::factory()->create([
-                'vehicle_id' => $cars->random()->id,
-            ]);
-            $reservations->add($r);
-        }
+
+        $r = Reservation::factory()->create(['vehicle_id' => $cars->random()->id]);
 
         //összár és foglalt napok kiszámolása
-        foreach ($reservations as $r) {
-            $daysSum = Carbon::parse($r->reservation_end)->diffInDays(Carbon::parse($r->reservation_start));
-            $r->days_reserved = $daysSum;
-            $r->price = $daysSum * $r->vehicle->pricePerDay;
-            $r->save();
-        }
-
-
+        $daysSum = Carbon::parse($r->reservation_end)->diffInDays(Carbon::parse($r->reservation_start));
+        $r->days_reserved = $daysSum;
+        $r->price = $daysSum * $r->vehicle->pricePerDay;
+        $r->save();
     }
 }

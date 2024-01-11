@@ -25,8 +25,6 @@ class ReservationFactory extends Factory
             'reservation_start' => fake()->dateTimeInInterval('+'.$r.' days', '+6 days'),
             'reservation_end' => fake()->dateTimeInInterval('+'.($r+7).' days', '+6 days'),
         ];
-        //Csak teszthez - még nem jó, mert a keresésnél nem lehet már foglalt autót foglalni, ez a random módszer generálhat duplán foglalt autót
-        //azonban, élesben csak a keresés -> majd foglalásból jönnének létre foglalások, ott viszont már nem lehet többször
-        //ugyanazon időpontban foglalt autót látni, így ez megfelel a kritériumnak.
+        //Ez a módszer generálhat duplán foglalt autót, csak egyet generáljunk vele (tesztnek)
     }
 }
